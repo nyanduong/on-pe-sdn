@@ -1,1 +1,1 @@
-mkdir config, controllers, middlewares, models, routes
+mkdir src/config, src/controllers, src/middlewares, src/models, src/routes
