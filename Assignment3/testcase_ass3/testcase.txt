@@ -1,0 +1,175 @@
+# QUICK TEST GUIDE - Assignment 3 Bug Report Authentication
+
+## Project Setup Information
+
+**Project folder:** `assignment3_<memberCode>`
+**Database name:** `BugReport`
+**Collections:** `roles`, `users`, `reports`
+**Server Port:** `8002`
+
+---
+
+## ✅ Task 1: Database Setup & Import Data
+
+Import the following files into the `BugReport` database:
+- `roles.json` → `roles`
+- `users.json` → `users`
+- `reports.json` → `reports`
+
+After importing, verify that the collections contain the sample data.
+
+---
+
+## ✅ Task 2: API – POST /users/signup
+
+**Endpoint:**  
+POST http://localhost:8002/users/signup
+
+**Request Body (raw JSON):**
+```json
+{
+    "username": "student1",
+    "email": "student1@assignment3.com",
+    "password": "123456",
+    "role": "user"
+}
+```
+
+### Check:
+- A new user is created successfully.
+- The password is stored as a bcrypt hash, not plaintext.
+- The API returns a JSON response.
+
+### Duplicate Email Test:
+Send the same request again.
+
+**Expected:**
+- HTTP `400 Bad Request`.
+- An appropriate error message.
+
+---
+
+## ✅ Task 3: API – POST /users/signin
+
+**Endpoint:**  
+POST http://localhost:8002/users/signin
+
+### Invalid Password Test:
+```json
+{
+    "email": "student1@assignment3.com",
+    "password": "0123456"
+}
+
+### Valid Password Test:
+```json
+{
+    "email": "student1@assignment3.com",
+    "password": "123456"
+}
+```
+---
+
+## ✅ Task 4: API – GET /reports
+
+**Endpoint:**  
+GET http://localhost:8002/reports
+
+**Authorization:**  
+Select **Bearer Token** in Postman and provide the JWT token obtained by logging in as `user1@assignment3.com`.
+
+### Check:
+- JWT authentication works.
+- Only reports assigned to the logged-in user are returned.
+- The response is JSON.
+- The `assignedTo` field is populated with `_id`, `username`, and `email`.
+- For User 1, the sample data should return exactly two reports: `Login page validation error` and `Password reset link expires too early`.
+- Reports assigned to other users must not appear.
+
+### Missing Token Test:
+Send the request without an Authorization header.
+
+**Expected:** HTTP `401 Unauthorized`.
+
+### Invalid Token Test:
+Set Authorization to `Bearer abcxyz`.
+
+**Expected:** HTTP `401 Unauthorized`.
+
+### Cross-user Isolation Test:
+Log in as `user2@assignment3.com` and call the same endpoint with User 2's token.
+
+**Expected:** Only reports assigned to User 2 are returned; User 1's reports must not appear.
+
+---
+
+## ✅ Task 5: API – POST /reports
+
+**Endpoint:**  
+POST http://localhost:8002/reports
+
+**Authorization:**  
+Select **Bearer Token** in Postman and provide the JWT token obtained by logging in as `admin1@assignment3.com`.
+
+**Request Body (raw JSON):**
+```json
+{
+    "title": "Search page fails to load",
+    "description": "The search page displays a blank screen after submitting a valid query.",
+    "severity": "medium",
+    "project": "Assignment3",
+    "assignedTo": "685100000000000000000003"
+}
+```
+
+The `assignedTo` value above is User 1's ID in the supplied sample data.
+
+### Check:
+- Only an authenticated Admin can create a report.
+- The API verifies that the assigned user exists and has role `user`.
+- The new report is created with the submitted title, description, severity, and project.
+- `assignedTo` references the selected user.
+- The new report's status is `open` by default.
+- `createdAt` is populated using the schema's default value.
+- The API returns an appropriate JSON response containing a success message and the created report.
+
+### Non-Admin Test:
+Log in as `moderator1@assignment3.com` or `user1@assignment3.com` and submit the same request.
+
+**Expected:** HTTP `403 Forbidden`.
+
+### Invalid Assignee Test:
+Log in as Admin and use the ID of a Moderator or Admin as `assignedTo`.
+
+**Expected:** The API rejects the request because the assigned user must have role `user`.
+
+### Nonexistent Assignee Test:
+Use a validly formatted ObjectId that does not belong to any user.
+
+**Expected:** The API rejects the request with an appropriate error response.
+
+---
+
+## Sample Accounts
+
+All sample accounts use password: `123456`
+
+| Role | Email |
+|---|---|
+| Admin | `admin1@assignment3.com` |
+| Moderator | `moderator1@assignment3.com` |
+| User 1 | `user1@assignment3.com` |
+| User 2 | `user2@assignment3.com` |
+| User 3 | `user3@assignment3.com` |
+| User 4 | `user4@assignment3.com` |
+
+---
+
+## Important Notes
+
+- Import the supplied `roles.json`, `users.json`, and `reports.json` into the matching collections in `BugReport`.
+- Use the sample account credentials above when testing login.
+- For Task 4, the API must filter reports using the authenticated user's ID from the JWT, not an ID supplied by the client.
+- For Task 5, the Admin must supply `assignedTo`, and the server must verify that the referenced user has role `user`.
+- A newly created report should use the schema defaults: `status: "open"` and `createdAt`.
+- If your implementation uses different enum values or field names from the assignment schema, align them with the assignment requirements before testing.

@@ -1,0 +1,108 @@
+[
+    {
+        "_id": {
+            "$oid": "685200000000000000000001"
+        },
+        "title": "Login page validation error",
+        "description": "The login form accepts an invalid email format and displays an unclear error message.",
+        "severity": "medium",
+        "status": "open",
+        "project": "Assignment3",
+        "completedAt": null,
+        "assignedTo": {
+            "$oid": "685100000000000000000003"
+        },
+        "createdAt": {
+            "$date": "2026-02-01T09:00:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "685200000000000000000002"
+        },
+        "title": "Password reset link expires too early",
+        "description": "The password reset link becomes invalid immediately after it is generated.",
+        "severity": "high",
+        "status": "in-progress",
+        "project": "Assignment3",
+        "completedAt": null,
+        "assignedTo": {
+            "$oid": "685100000000000000000003"
+        },
+        "createdAt": {
+            "$date": "2026-02-02T10:30:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "685200000000000000000003"
+        },
+        "title": "Dashboard layout overlaps on small screens",
+        "description": "Dashboard widgets overlap when the browser width is below 768 pixels.",
+        "severity": "low",
+        "status": "open",
+        "project": "Assignment3",
+        "completedAt": null,
+        "assignedTo": {
+            "$oid": "685100000000000000000004"
+        },
+        "createdAt": {
+            "$date": "2026-02-03T11:15:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "685200000000000000000004"
+        },
+        "title": "Report status is not updated",
+        "description": "Changing a report status to resolved does not persist after refreshing the page.",
+        "severity": "high",
+        "status": "resolved",
+        "project": "Assignment3",
+        "completedAt": {
+            "$date": "2026-02-04T14:00:00.000Z"
+        },
+        "assignedTo": {
+            "$oid": "685100000000000000000005"
+        },
+        "createdAt": {
+            "$date": "2026-02-03T13:00:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "685200000000000000000005"
+        },
+        "title": "API returns incorrect response for missing fields",
+        "description": "The API returns an internal server error instead of a validation response when required fields are missing.",
+        "severity": "medium",
+        "status": "closed",
+        "project": "Assignment3",
+        "completedAt": {
+            "$date": "2026-02-06T16:30:00.000Z"
+        },
+        "assignedTo": {
+            "$oid": "685100000000000000000004"
+        },
+        "createdAt": {
+            "$date": "2026-02-04T08:45:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "685200000000000000000006"
+        },
+        "title": "User profile image fails to load",
+        "description": "The profile page shows a broken image when a user has no profile image configured.",
+        "severity": "low",
+        "status": "open",
+        "project": "Assignment3",
+        "completedAt": null,
+        "assignedTo": {
+            "$oid": "685100000000000000000006"
+        },
+        "createdAt": {
+            "$date": "2026-02-05T12:00:00.000Z"
+        }
+    }
+]
