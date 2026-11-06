@@ -1,32 +1,43 @@
+const mongoose = require('mongoose');
 const Enrollment = require('../models/Enrollments');
 const Course = require('../models/Course');
 const User = require('../models/User');
 
 exports.signupEnrollment = async (req, res) => {
     try {
-        const { title, description, severity, project, assignedTo } = req.body;
-        if (!title || !description || !severity || !project || !assignedTo) {
-            return res.status(400).json({ message: 'Please provide all required fields' });
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ message: 'Authentication required' });
         }
 
-        const user = await User.findById(assignedTo).populate('role');
-        if (!user) {
-            return res.status(404).json({ message: 'Assigned user not found' });
+        const student = await User.findById(req.user.id);
+        if (!student) {
+            return res.status(401).json({ message: 'User not found' });
         }
-        if (!user.role || user.role.name !== 'user') {
-            return res.status(400).json({ message: 'Report can only be assigned to a user' });
+        if (student.role !== 'student') {
+            return res.status(403).json({ message: 'Only students can enroll' });
         }
 
-        const report = await Report.create({
-            title,
-            description,
-            severity,
-            project,
-            assignedTo
+        if (!req.body) {
+            return res.status(400).json({ message: 'A valid courseId is required' });
+        }
+
+        const { courseId } = req.body;
+        if (!mongoose.isObjectIdOrHexString(courseId)) {
+            return res.status(400).json({ message: 'A valid courseId is required' });
+        }
+
+        const course = await Course.findById(courseId);
+        if (!course) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        const enrollment = await Enrollment.create({
+            student: student._id,
+            course: course._id,
+            progressPercentage: 0
         });
-
-        res.status(201).json({ message: 'Report created successfully', report });
+        return res.status(200).json({ message: 'Enrollment successful', enrollment });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 };
