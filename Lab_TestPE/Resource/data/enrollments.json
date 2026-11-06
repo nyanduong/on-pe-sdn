@@ -1,0 +1,42 @@
+[
+  {
+    "_id": { "$oid": "65f200000000000000000001" },
+    "student": { "$oid": "65f000000000000000000003" },
+    "course": { "$oid": "65f100000000000000000001" },
+    "progressPercentage": 40,
+    "status": "enrolled",
+    "enrolledAt": { "$date": "2026-01-10T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f200000000000000000002" },
+    "student": { "$oid": "65f000000000000000000003" },
+    "course": { "$oid": "65f100000000000000000002" },
+    "progressPercentage": 100,
+    "status": "completed",
+    "enrolledAt": { "$date": "2026-01-10T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f200000000000000000003" },
+    "student": { "$oid": "65f000000000000000000004" },
+    "course": { "$oid": "65f100000000000000000003" },
+    "progressPercentage": 70,
+    "status": "enrolled",
+    "enrolledAt": { "$date": "2026-01-11T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f200000000000000000004" },
+    "student": { "$oid": "65f000000000000000000004" },
+    "course": { "$oid": "65f100000000000000000004" },
+    "progressPercentage": 100,
+    "status": "completed",
+    "enrolledAt": { "$date": "2026-01-12T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f200000000000000000005" },
+    "student": { "$oid": "65f000000000000000000005" },
+    "course": { "$oid": "65f100000000000000000001" },
+    "progressPercentage": 20,
+    "status": "enrolled",
+    "enrolledAt": { "$date": "2026-01-13T00:00:00Z" }
+  }
+]

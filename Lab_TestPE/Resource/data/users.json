@@ -1,0 +1,42 @@
+[
+  {
+    "_id": { "$oid": "65f000000000000000000001" },
+    "name": "Alice Instructor",
+    "email": "alice@course.com",
+    "password": "$2b$10$examplehash1",
+    "role": "instructor",
+    "createdAt": { "$date": "2026-01-01T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f000000000000000000002" },
+    "name": "David Instructor",
+    "email": "david@course.com",
+    "password": "$2b$10$examplehash2",
+    "role": "instructor",
+    "createdAt": { "$date": "2026-01-01T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f000000000000000000003" },
+    "name": "Bob Student",
+    "email": "bob@student.com",
+    "password": "$2b$10$examplehash3",
+    "role": "student",
+    "createdAt": { "$date": "2026-01-01T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f000000000000000000004" },
+    "name": "Carol Student",
+    "email": "carol@student.com",
+    "password": "$2b$10$examplehash4",
+    "role": "student",
+    "createdAt": { "$date": "2026-01-01T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f000000000000000000005" },
+    "name": "Eve Student",
+    "email": "eve@student.com",
+    "password": "$2b$10$examplehash5",
+    "role": "student",
+    "createdAt": { "$date": "2026-01-01T00:00:00Z" }
+  }
+]

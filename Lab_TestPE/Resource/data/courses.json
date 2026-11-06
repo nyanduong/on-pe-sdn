@@ -1,0 +1,34 @@
+[
+  {
+    "_id": { "$oid": "65f100000000000000000001" },
+    "title": "NodeJS Advanced",
+    "description": "Deep dive into NodeJS backend",
+    "price": 199,
+    "instructor": { "$oid": "65f000000000000000000001" },
+    "createdAt": { "$date": "2026-01-02T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f100000000000000000002" },
+    "title": "MongoDB Mastery",
+    "description": "Advanced MongoDB techniques",
+    "price": 149,
+    "instructor": { "$oid": "65f000000000000000000001" },
+    "createdAt": { "$date": "2026-01-02T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f100000000000000000003" },
+    "title": "ExpressJS Security",
+    "description": "JWT, OAuth, and Security Best Practices",
+    "price": 179,
+    "instructor": { "$oid": "65f000000000000000000002" },
+    "createdAt": { "$date": "2026-01-02T00:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65f100000000000000000004" },
+    "title": "REST API Design",
+    "description": "Design scalable RESTful APIs",
+    "price": 129,
+    "instructor": { "$oid": "65f000000000000000000002" },
+    "createdAt": { "$date": "2026-01-02T00:00:00Z" }
+  }
+]

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Enrollment Report</title>
+</head>
+
+<body>
+    <h2>Enrollment Report</h2>
+    <h3>
+	<!-- TODO 1: Display student name and user id -->
+        <%=   %> (ID: <%=   %>)
+    </h3>
+
+    <table border="1">
+        <tr>
+            <th>Enrolled Date</th>
+            <th>Course Title</th>
+            <th>progressPercentage</th>
+            <th>status</th>
+        </tr>
+
+      	<!-- TODO 2: Display enrollment information corresponding to the columns above. -->
+        <% enrollments.forEach(e=> { %>
+            <tr>
+                <td>
+                    <%=  %>
+                </td>
+                <td>
+                    <%=  %>
+                </td>
+                <td>
+                    <%=  %>
+                </td>
+                <td>
+                    <%=  %>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+
+</html>
+
+<!-- 
+========================================
+STUDENT NOTES - How to use this template
+========================================
+
+1. COPY this file to your views/ folder as "enrollments.ejs"
+
+2. TESTING:
+   - Start server: npm start or npm run dev
+   - Visit: http://localhost:8386/users/<userId>/enrollments/view
+   - Check: User info displays, enrollments list shows
+
+Good luck with your exam!  
+-->
