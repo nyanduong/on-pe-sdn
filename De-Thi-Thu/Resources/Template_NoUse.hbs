@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-row {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-pending {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status-confirmed {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-cancelled {
+            background: #dc3545;
+            color: white;
+        }
+
+        .status-completed {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .empty-state h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>nothing to display</h1>
+
+        {{!-- [1] Add condition to check i --}}
+        <ul>
+            {{!-- [2] Add loop to iterate through data --}}
+            <li>
+                <div class="info-row">
+                    <strong>Patient:</strong> {{!-- [3] Display data --}}
+                </div>
+                <div class="info-row">
+                    <strong>Doctor:</strong> {{!-- [4] Display data --}}
+                </div>
+                <div class="info-row">
+                    <strong>Date:</strong> {{!-- [5] Display data --}} | <strong>Time:</strong> {{!-- [6]
+                    Display data --}}
+                </div>
+                <div class="info-row">
+                    <strong>Status:</strong>
+                    <span class="status status-{{!-- [7] Display data --}}">{{!-- [8] Display data --}}</span>
+                </div>
+                <hr>
+            </li>
+            {{!-- [9] Close the loop --}}
+        </ul>
+        {{!-- [10] Add else branch --}}
+        <div class="empty-state">
+            <h2>No data Found</h2>
+            <p>There are currently no data to display.</p>
+        </div>
+        {{!-- [11] Close the condition --}}
+    </div>
+</body>
+
+</html>
