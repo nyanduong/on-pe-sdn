@@ -1,12 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const mediaSchema = new mongoose.Schema({
-    title: { type: String },
-    category: { type: String },
-    year: { type: Number },
-    description: { type: String },
-    posterUrl: { type: String },
-    averageRating: { type: Number }
-});
+    title: String,
+    category: String,
+    year: Number,
+    description: String,
+    posterUrl: String,
+    averageRating: Number,
+    type: String,
+    image: String,
+    createdAt: Date
+}, { versionKey: false });
 
-module.exports = mongoose.model("Media", mediaSchema);
+module.exports = mongoose.model('Media', mediaSchema, 'Medias');
